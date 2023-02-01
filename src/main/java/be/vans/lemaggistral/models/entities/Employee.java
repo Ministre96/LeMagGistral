@@ -8,5 +8,5 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Employee extends Person{
+public abstract class Employee extends Person{
 }

@@ -1,4 +1,4 @@
-package be.vans.lemaggistral.models.repositories;
+package be.vans.lemaggistral.repositories;
 
 import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.models.entities.Promo;
