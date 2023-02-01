@@ -19,7 +19,5 @@ public class Command_Article extends BaseEntity<Integer>{
     @ManyToOne
     private Article article;
 
-    @ManyToOne
-    private Command command;
 
 }

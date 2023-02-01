@@ -26,6 +26,7 @@ public class Command extends BaseEntity<Integer>{
     @ManyToOne()
     private Client client;
 
-    @OneToMany(mappedBy = "command")
+    @OneToMany()
+    @JoinColumn(name = "commandId")
     private List<Command_Article> commandArticles;
 }
