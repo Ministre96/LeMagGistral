@@ -1,6 +1,7 @@
 package be.vans.lemaggistral.models.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,4 +25,7 @@ public class Command extends BaseEntity<Integer>{
 
     @ManyToOne()
     private Client client;
+
+    @OneToMany(mappedBy = "command")
+    private List<Command_Article> commandArticles;
 }
