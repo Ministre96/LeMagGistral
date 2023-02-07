@@ -26,8 +26,10 @@ public class CategoryController {
     public ResponseEntity<Collection<CategoryDTO>> getAllAction(){
         return ResponseEntity.ok(this.categoryService.readAll().map(CategoryDTO::toDTO).toList());
     }
-    @PostMapping(path={"/add"})
-    public ResponseEntity<CategoryDTO> addCategoryAction(@Valid @RequestBody CategoryAddForm categoryAddForm){
+    @PostMapping(path={""})
+    public ResponseEntity<CategoryDTO> addCategoryAction(
+            @Valid @RequestBody CategoryAddForm categoryAddForm
+    ){
         Category category = new Category();
         try{
             category = this.categoryService.save(categoryAddForm.toBll());

@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class CategoryAddForm {
     @NotBlank(message = "errors.notBlank")
     private String name;
-    public Category toBll(){
+    public Category  toBll(){
         return Category.builder()
                 .name(name)
                 .build();

@@ -12,16 +12,18 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Article extends BaseEntity<Integer> {
-
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private String brand;
+
+    @ManyToOne(targetEntity = Brand.class)
+    private Brand brand;
 
     @ManyToOne(targetEntity = Category.class)
     private Category category;
+
     @Column(nullable = false)
     private float price;
+
     private NutriScore nutriScore;
 
     @Column(nullable = false)

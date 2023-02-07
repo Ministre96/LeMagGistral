@@ -25,7 +25,7 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<Collection<ArticleDTO>> getAllAction(){
         return ResponseEntity.ok(this.articleService.readAll().map(ArticleDTO::toDTO).toList());
     }
@@ -38,5 +38,4 @@ public class ArticleController {
                 .orElseThrow(()-> new HttpNotFoundException("Article with id"+id+" is not found"));
         return ResponseEntity.ok(ArticleDTO.toDTO(article));
     }
-
 }

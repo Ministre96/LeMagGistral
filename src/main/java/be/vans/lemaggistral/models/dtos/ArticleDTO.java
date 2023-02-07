@@ -11,7 +11,7 @@ import java.util.List;
 public class ArticleDTO {
 
     private String name;
-    private String brand;
+    private Brand brand;
     private Category category;
     private float price;
     private NutriScore nutriScore;
