@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
+@Builder
 public class Category extends BaseEntity<Integer>{
     @Column(nullable = false)
     private String name;

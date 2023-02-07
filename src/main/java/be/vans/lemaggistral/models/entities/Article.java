@@ -22,7 +22,7 @@ public class Article extends BaseEntity<Integer> {
     private Category category;
     @Column(nullable = false)
     private float price;
-    private String nutriScore;
+    private NutriScore nutriScore;
 
     @Column(nullable = false)
     private boolean bio;
