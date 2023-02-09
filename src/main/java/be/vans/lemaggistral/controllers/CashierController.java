@@ -19,7 +19,6 @@ public class CashierController {
 
     private final CashierService cashierService;
 
-
     public CashierController(CashierService cashierService) {
         this.cashierService = cashierService;
     }
@@ -37,5 +36,6 @@ public class CashierController {
                 .orElseThrow(()-> new HttpNotFoundException("Cashier with id  "+id+" is not found"));
         return ResponseEntity.ok(CashierDTO.toDTO(cashier));
     }
+
 
 }

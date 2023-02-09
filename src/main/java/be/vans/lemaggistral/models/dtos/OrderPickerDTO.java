@@ -1,7 +1,6 @@
 package be.vans.lemaggistral.models.dtos;
 
 import be.vans.lemaggistral.models.entities.OrderPicker;
-import be.vans.lemaggistral.models.entities.OrderPicker;
 import lombok.Builder;
 import lombok.Data;
 

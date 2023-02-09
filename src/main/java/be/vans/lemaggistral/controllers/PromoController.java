@@ -1,11 +1,7 @@
 package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
-import be.vans.lemaggistral.models.dtos.ArticleDTO;
-import be.vans.lemaggistral.models.dtos.CommandDTO;
 import be.vans.lemaggistral.models.dtos.PromoDTO;
-import be.vans.lemaggistral.models.entities.Article;
-import be.vans.lemaggistral.models.entities.Command;
 import be.vans.lemaggistral.models.entities.Promo;
 import be.vans.lemaggistral.services.promo.PromoService;
 import org.springframework.http.ResponseEntity;

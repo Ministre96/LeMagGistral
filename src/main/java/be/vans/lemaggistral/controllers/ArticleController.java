@@ -3,7 +3,6 @@ package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
 import be.vans.lemaggistral.models.dtos.ArticleDTO;
-import be.vans.lemaggistral.models.dtos.CategoryDTO;
 import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.services.article.ArticleService;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/art")

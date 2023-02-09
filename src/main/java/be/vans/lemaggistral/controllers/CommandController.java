@@ -2,20 +2,12 @@ package be.vans.lemaggistral.controllers;
 
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
-import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
-import be.vans.lemaggistral.models.dtos.ArticleDTO;
-import be.vans.lemaggistral.models.dtos.CategoryDTO;
 import be.vans.lemaggistral.models.dtos.CommandDTO;
-import be.vans.lemaggistral.models.entities.Article;
-import be.vans.lemaggistral.models.entities.Category;
 import be.vans.lemaggistral.models.entities.Command;
-import be.vans.lemaggistral.models.forms.CategoryAddForm;
 import be.vans.lemaggistral.services.command.CommandService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController

@@ -2,13 +2,9 @@ package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
 import be.vans.lemaggistral.models.dtos.BrandDTO;
-import be.vans.lemaggistral.models.dtos.CategoryDTO;
 import be.vans.lemaggistral.models.entities.Brand;
-import be.vans.lemaggistral.models.entities.Category;
 import be.vans.lemaggistral.models.forms.BrandAddForm;
-import be.vans.lemaggistral.models.forms.CategoryAddForm;
 import be.vans.lemaggistral.services.brand.BrandService;
-import be.vans.lemaggistral.services.category.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
