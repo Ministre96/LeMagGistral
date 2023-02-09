@@ -1,9 +1,9 @@
 package be.vans.lemaggistral.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,4 +19,9 @@ public class Promo extends BaseEntity<Integer>{
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
+
+    public boolean isAvailable(){
+        return this.startDate.compareTo(new Date()) <= 0;
+    }
+
 }
