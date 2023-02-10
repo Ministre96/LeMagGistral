@@ -39,6 +39,11 @@ public class CategoryController {
         return ResponseEntity.ok(CategoryDTO.toDTO(category));
     }
 
+    @GetMapping(path = {"/bs"})
+    public ResponseEntity<Collection<CategoryDTO>> getAllBestSell(){
+        return ResponseEntity.ok(this.categoryService.readCategoryBestSell().keySet().stream().map(CategoryDTO::toDTO).toList());
+    }
+
 
 
 }

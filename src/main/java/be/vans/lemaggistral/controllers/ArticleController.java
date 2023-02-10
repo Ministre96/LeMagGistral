@@ -38,7 +38,7 @@ public class ArticleController {
         return ResponseEntity.ok(ArticleDTO.toDTO(article));
     }
 
-    @GetMapping(path={"/ms"})
+    @GetMapping(path={"/bs"})
     public ResponseEntity<Collection<ArticleDTO>> getAllBestSell(){
         return ResponseEntity.ok(this.articleService.readArticleBestSellByCat().keySet().stream().map(ArticleDTO::toDTO).toList());
     }
