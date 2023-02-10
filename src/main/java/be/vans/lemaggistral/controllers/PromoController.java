@@ -1,15 +1,16 @@
 package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
+import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
 import be.vans.lemaggistral.models.dtos.PromoDTO;
 import be.vans.lemaggistral.models.entities.Promo;
+import be.vans.lemaggistral.models.forms.PromoAddForm;
 import be.vans.lemaggistral.services.promo.PromoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -34,6 +35,19 @@ public class PromoController {
     ){
         Promo promo = this.promoService.readOneByKey(id)
                 .orElseThrow(()-> new HttpNotFoundException("Promo with id"+id+" is not found"));
+        return ResponseEntity.ok(PromoDTO.toDTO(promo));
+    }
+
+    @PostMapping(path={""})
+    public ResponseEntity<PromoDTO> addPromoAction(
+            @Valid @RequestBody PromoAddForm promoAddForm
+    ){
+        Promo promo = new Promo();
+        try{
+            promo = this.promoService.save(promoAddForm.toBll());
+        }catch (Exception exception){
+            throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
+        }
         return ResponseEntity.ok(PromoDTO.toDTO(promo));
     }
 

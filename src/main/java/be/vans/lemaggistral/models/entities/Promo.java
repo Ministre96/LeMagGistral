@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Promo extends BaseEntity<Integer>{
     @Column(nullable = false)
     private float percentage;
