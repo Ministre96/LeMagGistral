@@ -50,5 +50,13 @@ public class ArticleController implements BaseRestController<ArticleDTO, Integer
         return ResponseEntity.ok(this.articleService.readArticleBestSellByCat(PageRequest.of(page, size)).keySet().stream().map(ArticleDTO::toDTO).toList());
     }
 
+    @GetMapping(path={"/bp"})
+    public ResponseEntity<Collection<ArticleDTO>> getAllBestPromos(
+            @RequestParam(name = "_page", defaultValue = "1") int page,
+            @RequestParam(name = "_size", defaultValue = "5") int size
+    ){
+        return ResponseEntity.ok(this.articleService.readArticleBestPromo(PageRequest.of(page, size)).keySet().stream().map(ArticleDTO::toDTO).toList());
+    }
+
 
 }
