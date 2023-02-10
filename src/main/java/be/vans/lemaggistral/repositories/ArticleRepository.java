@@ -3,8 +3,15 @@ package be.vans.lemaggistral.repositories;
 import be.vans.lemaggistral.models.entities.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaSpecificationExecutor {
+
+    @Query(value="SELECT a, SUM(ca.quantity) as qtt FROM Command_Article ca JOIN ca.article a JOIN FETCH a.category cat group by a ORDER BY qtt DESC")
+    Map<Article, Integer> readArticleBestSellByCat();
 }

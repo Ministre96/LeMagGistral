@@ -5,6 +5,7 @@ import be.vans.lemaggistral.exceptions.HttpNotFoundException;
 import be.vans.lemaggistral.models.dtos.ArticleDTO;
 import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.services.article.ArticleService;
+import org.hibernate.mapping.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,4 +37,11 @@ public class ArticleController {
                 .orElseThrow(()-> new HttpNotFoundException("Article with id"+id+" is not found"));
         return ResponseEntity.ok(ArticleDTO.toDTO(article));
     }
+
+    @GetMapping(path={"/ms"})
+    public ResponseEntity<Collection<ArticleDTO>> getAllBestSell(){
+        return ResponseEntity.ok(this.articleService.readArticleBestSellByCat().keySet().stream().map(ArticleDTO::toDTO).toList());
+    }
+
+
 }
