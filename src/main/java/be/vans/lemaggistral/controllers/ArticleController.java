@@ -4,6 +4,7 @@ package be.vans.lemaggistral.controllers;
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
 import be.vans.lemaggistral.models.dtos.ArticleDTO;
 import be.vans.lemaggistral.models.entities.Article;
+import be.vans.lemaggistral.models.entities.Promo;
 import be.vans.lemaggistral.services.article.ArticleService;
 import org.hibernate.mapping.Map;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/art")
@@ -57,6 +59,5 @@ public class ArticleController implements BaseRestController<ArticleDTO, Integer
     ){
         return ResponseEntity.ok(this.articleService.readArticleBestPromo(PageRequest.of(page, size)).keySet().stream().map(ArticleDTO::toDTO).toList());
     }
-
 
 }

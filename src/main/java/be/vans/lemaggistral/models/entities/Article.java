@@ -42,7 +42,7 @@ public class Article extends BaseEntity<Integer> {
     @Enumerated(EnumType.STRING)
     private Unity unity;
 
-    @ManyToMany()
+    @OneToMany()
     private List<Promo> promos;
 
 }

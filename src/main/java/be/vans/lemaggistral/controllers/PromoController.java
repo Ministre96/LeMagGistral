@@ -36,4 +36,6 @@ public class PromoController {
                 .orElseThrow(()-> new HttpNotFoundException("Promo with id"+id+" is not found"));
         return ResponseEntity.ok(PromoDTO.toDTO(promo));
     }
+
+    //faire le post + commit changement relation Promo->Article
 }
