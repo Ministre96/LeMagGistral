@@ -11,6 +11,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
+@Builder
 public class Command_Article extends BaseEntity<Integer>{
 
     @Column(nullable = false)
@@ -19,5 +20,9 @@ public class Command_Article extends BaseEntity<Integer>{
     @ManyToOne
     private Article article;
 
-
+    public boolean equals(Command_Article commandArticle) {
+        if(commandArticle.article == this.article)
+            return true;
+        return false;
+    }
 }

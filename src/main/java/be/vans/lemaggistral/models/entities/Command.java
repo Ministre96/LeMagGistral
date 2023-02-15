@@ -1,6 +1,7 @@
 package be.vans.lemaggistral.models.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import jakarta.persistence.*;

@@ -7,12 +7,15 @@ import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.models.entities.Client;
 import be.vans.lemaggistral.models.entities.Command;
 import be.vans.lemaggistral.models.entities.Command_Article;
+import be.vans.lemaggistral.models.forms.Command_ArticleForm;
 import be.vans.lemaggistral.services.command.CommandService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = {"/comm"})
@@ -41,13 +44,17 @@ public class CommandController {
     @PatchMapping(path={""})
     public ResponseEntity<CommandDTO> AddArticleToCommandAction(
             Client client,
-            Command_Article commandArticle
+            Command_ArticleForm commandArticle
     ){
         Command command = this.commandService.activeCommand(client);
-        List<Command_Article> temp = command.getCommandArticles();
-        temp.add(commandArticle);
-        command.setCommandArticles(temp);
-        command = this.commandService.save(command);
-        return ResponseEntity.ok(CommandDTO.toDTO(command));
+        Optional<Command_Article> temp = command.getCommandArticles().stream()
+                    .filter(a -> a.equals(commandArticle))
+                    .findFirst();
+        temp.ifPresentOrElse(
+                a-> a.setQuantity(a.getQuantity()+commandArticle.toBll().getQuantity()),
+                ()-> command.getCommandArticles().add(commandArticle.toBll())
+        );
+        Command saveCommand = this.commandService.save(command);
+        return ResponseEntity.ok(CommandDTO.toDTO(saveCommand));
     }
 }
