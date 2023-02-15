@@ -1,15 +1,19 @@
 package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
+import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
+import be.vans.lemaggistral.models.dtos.ClientDTO;
 import be.vans.lemaggistral.models.dtos.DirectorDTO;
+import be.vans.lemaggistral.models.entities.Client;
 import be.vans.lemaggistral.models.entities.Director;
+import be.vans.lemaggistral.models.forms.ClientAddForm;
+import be.vans.lemaggistral.models.forms.DirectorAddForm;
 import be.vans.lemaggistral.services.person.employee.director.DirectorService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -33,6 +37,18 @@ public class DirectorController {
     ){
         Director director = this.directorService.readOneByKey(id)
                 .orElseThrow(()-> new HttpNotFoundException("Director with id  "+id+" is not found"));
+        return ResponseEntity.ok(DirectorDTO.toDTO(director));
+    }
+    @PostMapping(path={""})
+    public ResponseEntity<DirectorDTO> addDirectorAction(
+            @Valid @RequestBody DirectorAddForm directorAddForm
+    ){
+        Director director = new Director();
+        try{
+            director = this.directorService.save(directorAddForm.toBll());
+        }catch (Exception exception){
+            throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
+        }
         return ResponseEntity.ok(DirectorDTO.toDTO(director));
     }
 }

@@ -1,15 +1,19 @@
 package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
+import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
+import be.vans.lemaggistral.models.dtos.CashierDTO;
 import be.vans.lemaggistral.models.dtos.ClientDTO;
+import be.vans.lemaggistral.models.entities.Cashier;
 import be.vans.lemaggistral.models.entities.Client;
+import be.vans.lemaggistral.models.forms.CashierAddForm;
+import be.vans.lemaggistral.models.forms.ClientAddForm;
 import be.vans.lemaggistral.services.person.client.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -33,6 +37,19 @@ public class ClientController {
     ) {
         Client client = this.clientService.readOneByKey(id)
                 .orElseThrow(() -> new HttpNotFoundException("Client with id  " + id + " is not found"));
+        return ResponseEntity.ok(ClientDTO.toDTO(client));
+    }
+
+    @PostMapping(path={""})
+    public ResponseEntity<ClientDTO> addClientAction(
+            @Valid @RequestBody ClientAddForm clientAddForm
+    ){
+        Client client = new Client();
+        try{
+            client = this.clientService.save(clientAddForm.toBll());
+        }catch (Exception exception){
+            throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
+        }
         return ResponseEntity.ok(ClientDTO.toDTO(client));
     }
 }

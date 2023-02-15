@@ -1,7 +1,6 @@
 package be.vans.lemaggistral.models.forms;
 
 import be.vans.lemaggistral.models.entities.Brand;
-import be.vans.lemaggistral.models.entities.Category;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

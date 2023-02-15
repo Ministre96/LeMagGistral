@@ -1,15 +1,20 @@
 package be.vans.lemaggistral.controllers;
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
+import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
+import be.vans.lemaggistral.models.dtos.ArticleDTO;
 import be.vans.lemaggistral.models.dtos.OrderPickerDTO;
+import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.models.entities.OrderPicker;
+import be.vans.lemaggistral.models.forms.ArticleAddForm;
+import be.vans.lemaggistral.models.forms.OrderPickerAddForm;
 import be.vans.lemaggistral.services.person.employee.orderpicker.OrderPickerService;
+import jakarta.persistence.criteria.Order;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -34,6 +39,19 @@ public class OrderPickerController {
     ) {
         OrderPicker orderPicker = this.orderPickerService.readOneByKey(id)
                 .orElseThrow(() -> new HttpNotFoundException("OrderPicker with id  " + id + " is not found"));
+        return ResponseEntity.ok(OrderPickerDTO.toDTO(orderPicker));
+    }
+
+    @PostMapping(path={""})
+    public ResponseEntity<OrderPickerDTO> addOrderPickerAction(
+            @Valid @RequestBody OrderPickerAddForm orderPickerAddForm
+    ){
+        OrderPicker orderPicker = new OrderPicker();
+        try{
+            orderPicker = this.orderPickerService.save(orderPickerAddForm.toBll());
+        }catch (Exception exception){
+            throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
+        }
         return ResponseEntity.ok(OrderPickerDTO.toDTO(orderPicker));
     }
 }

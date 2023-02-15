@@ -2,6 +2,7 @@ package be.vans.lemaggistral.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -9,6 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @ToString
 public abstract class Person extends BaseEntity<Integer>{
 
