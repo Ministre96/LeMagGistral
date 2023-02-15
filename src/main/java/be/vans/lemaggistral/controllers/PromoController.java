@@ -50,6 +50,4 @@ public class PromoController {
         }
         return ResponseEntity.ok(PromoDTO.toDTO(promo));
     }
-
-    //faire le post + commit changement relation Promo->Article
 }

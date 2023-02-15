@@ -12,6 +12,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
+@Builder
 public class Command extends BaseEntity<Integer>{
 
     @Column(nullable = true)
