@@ -2,16 +2,20 @@ package be.vans.lemaggistral.controllers;
 
 
 import be.vans.lemaggistral.exceptions.HttpNotFoundException;
+import be.vans.lemaggistral.exceptions.HttpPreConditionFailedException;
 import be.vans.lemaggistral.models.dtos.ArticleDTO;
 import be.vans.lemaggistral.models.entities.Article;
 import be.vans.lemaggistral.models.entities.Promo;
+import be.vans.lemaggistral.models.forms.ArticleAddForm;
 import be.vans.lemaggistral.services.article.ArticleService;
+import jakarta.validation.Valid;
 import org.hibernate.mapping.Map;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -58,6 +62,19 @@ public class ArticleController implements BaseRestController<ArticleDTO, Integer
             @RequestParam(name = "_size", defaultValue = "5") int size
     ){
         return ResponseEntity.ok(this.articleService.readArticleBestPromo(PageRequest.of(page, size)).keySet().stream().map(ArticleDTO::toDTO).toList());
+    }
+
+    @PostMapping(path={""})
+    public ResponseEntity<ArticleDTO> addArticleDTO(
+            @Valid @RequestBody ArticleAddForm articleAddForm
+    ){
+        Article article = new Article();
+        try{
+            article = this.articleService.save(articleAddForm.toBll());
+        }catch (Exception exception){
+            throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
+        }
+        return ResponseEntity.ok(ArticleDTO.toDTO(article));
     }
 
 }

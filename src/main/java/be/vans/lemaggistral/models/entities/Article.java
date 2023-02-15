@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class Article extends BaseEntity<Integer> {
     @Column(nullable = false)
     private String name;
