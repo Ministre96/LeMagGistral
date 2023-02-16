@@ -47,7 +47,7 @@ public class ArticleController implements BaseRestController<ArticleDTO, Integer
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(this.articleService.readAll(pageable).map(ArticleDTO::toDTO).toList());
     }
-
+/*
     @GetMapping(path={"/bs"})
     public ResponseEntity<Collection<ArticleDTO>> getAllBestSell(
             @RequestParam(name = "_page", defaultValue = "1") int page,
@@ -63,7 +63,7 @@ public class ArticleController implements BaseRestController<ArticleDTO, Integer
     ){
         return ResponseEntity.ok(this.articleService.readArticleBestPromo(PageRequest.of(page, size)).keySet().stream().map(ArticleDTO::toDTO).toList());
     }
-
+*/
     @PostMapping(path={""})
     public ResponseEntity<ArticleDTO> addArticleDTO(
             @Valid @RequestBody ArticleAddForm articleAddForm

@@ -11,8 +11,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@Builder
 public class Cashier extends Employee{
 }

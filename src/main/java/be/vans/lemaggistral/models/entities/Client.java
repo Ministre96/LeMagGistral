@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Client extends Person{
     @OneToMany()
     private List<Command> commands;

@@ -41,7 +41,7 @@ public class OrderPickerController {
                 .orElseThrow(() -> new HttpNotFoundException("OrderPicker with id  " + id + " is not found"));
         return ResponseEntity.ok(OrderPickerDTO.toDTO(orderPicker));
     }
-
+/*
     @PostMapping(path={""})
     public ResponseEntity<OrderPickerDTO> addOrderPickerAction(
             @Valid @RequestBody OrderPickerAddForm orderPickerAddForm
@@ -53,5 +53,5 @@ public class OrderPickerController {
             throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
         }
         return ResponseEntity.ok(OrderPickerDTO.toDTO(orderPicker));
-    }
+    }*/
 }

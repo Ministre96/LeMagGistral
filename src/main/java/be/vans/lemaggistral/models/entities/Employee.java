@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @Getter
 @Setter
-@SuperBuilder
 @AllArgsConstructor
 public abstract class Employee extends Person{
 }

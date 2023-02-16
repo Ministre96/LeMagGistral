@@ -16,11 +16,11 @@ import java.util.Map;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaSpecificationExecutor {
-
+/*
     @Query(value="SELECT a, SUM(ca.quantity) as qtt FROM Command_Article ca JOIN ca.article a JOIN FETCH a.category cat group by a ORDER BY qtt DESC")
     Map<Article, Integer> readArticleBestSellByCat(Pageable pageable);
 
     @Query(value="SELECT a, p FROM Article as a JOIN FETCH a.promos p WHERE p.startDate < :date AND p.endDate > :date ORDER BY p.percentage DESC")
     Map<Article, Promo> readArticleBestPromo(@Param("date") LocalDate date, Pageable pageable);
-
+*/
 }

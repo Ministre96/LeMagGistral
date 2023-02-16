@@ -27,7 +27,7 @@ public class CashierAddForm {
 
     @NotBlank(message = "errors.notBlank")
     private String phoneNumber;
-
+/*
     public Cashier toBll(){
         return Cashier.builder()
                 .firstname(firstname)
@@ -36,5 +36,5 @@ public class CashierAddForm {
                 .mail(mail)
                 .phoneNumber(phoneNumber)
                 .build();
-    }
+    }*/
 }

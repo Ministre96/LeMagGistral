@@ -10,10 +10,9 @@ import lombok.experimental.SuperBuilder;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Director extends Employee {
 
 }

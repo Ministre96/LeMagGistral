@@ -2,6 +2,7 @@ package be.vans.lemaggistral.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 

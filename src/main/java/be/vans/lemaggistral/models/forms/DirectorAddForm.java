@@ -27,7 +27,7 @@ public class DirectorAddForm {
 
     @NotBlank(message = "errors.notBlank")
     private String phoneNumber;
-
+/*
     public Director toBll(){
         return Director.builder()
                 .firstname(firstname)
@@ -36,5 +36,5 @@ public class DirectorAddForm {
                 .mail(mail)
                 .phoneNumber(phoneNumber)
                 .build();
-    }
+    }*/
 }

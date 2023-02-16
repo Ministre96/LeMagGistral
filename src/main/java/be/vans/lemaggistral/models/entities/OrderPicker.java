@@ -13,7 +13,6 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@SuperBuilder
+@Builder
 public class OrderPicker extends Employee{
 }

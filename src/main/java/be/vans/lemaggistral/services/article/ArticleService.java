@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public interface ArticleService extends CrudService<Article, Integer> {
-
+/*
     Map<Article, Integer> readArticleBestSellByCat(Pageable pageable);
 
     Map<Article, Promo> readArticleBestPromo(Pageable pageable);
-
+*/
 }

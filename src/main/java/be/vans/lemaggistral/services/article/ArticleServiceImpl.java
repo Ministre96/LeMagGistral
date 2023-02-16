@@ -20,7 +20,7 @@ public class ArticleServiceImpl extends CrudServiceImpl<ArticleRepository, Artic
         super(articleRepository);
     }
 
-
+/*
     @Override
     public Map<Article, Integer> readArticleBestSellByCat(
             Pageable pageable
@@ -33,5 +33,5 @@ public class ArticleServiceImpl extends CrudServiceImpl<ArticleRepository, Artic
             Pageable pageable
     ) {
         return this.repository.readArticleBestPromo(LocalDate.now(), pageable);
-    }
+    }*/
 }

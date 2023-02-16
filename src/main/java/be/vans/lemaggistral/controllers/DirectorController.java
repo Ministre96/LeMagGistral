@@ -39,6 +39,7 @@ public class DirectorController {
                 .orElseThrow(()-> new HttpNotFoundException("Director with id  "+id+" is not found"));
         return ResponseEntity.ok(DirectorDTO.toDTO(director));
     }
+    /*
     @PostMapping(path={""})
     public ResponseEntity<DirectorDTO> addDirectorAction(
             @Valid @RequestBody DirectorAddForm directorAddForm
@@ -50,5 +51,5 @@ public class DirectorController {
             throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
         }
         return ResponseEntity.ok(DirectorDTO.toDTO(director));
-    }
+    }*/
 }

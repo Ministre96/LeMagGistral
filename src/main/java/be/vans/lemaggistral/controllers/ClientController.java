@@ -39,7 +39,7 @@ public class ClientController {
                 .orElseThrow(() -> new HttpNotFoundException("Client with id  " + id + " is not found"));
         return ResponseEntity.ok(ClientDTO.toDTO(client));
     }
-
+/*
     @PostMapping(path={""})
     public ResponseEntity<ClientDTO> addClientAction(
             @Valid @RequestBody ClientAddForm clientAddForm
@@ -51,5 +51,5 @@ public class ClientController {
             throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
         }
         return ResponseEntity.ok(ClientDTO.toDTO(client));
-    }
+    }*/
 }

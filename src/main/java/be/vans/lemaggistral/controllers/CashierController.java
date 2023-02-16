@@ -40,7 +40,7 @@ public class CashierController {
                 .orElseThrow(()-> new HttpNotFoundException("Cashier with id  "+id+" is not found"));
         return ResponseEntity.ok(CashierDTO.toDTO(cashier));
     }
-
+/*
     @PostMapping(path={""})
     public ResponseEntity<CashierDTO> addCashierAction(
             @Valid @RequestBody CashierAddForm cashierAddForm
@@ -52,6 +52,6 @@ public class CashierController {
             throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
         }
         return ResponseEntity.ok(CashierDTO.toDTO(cashier));
-    }
+    }*/
 
 }

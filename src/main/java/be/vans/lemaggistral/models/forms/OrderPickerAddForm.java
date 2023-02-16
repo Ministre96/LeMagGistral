@@ -27,7 +27,7 @@ public class OrderPickerAddForm {
 
     @NotBlank(message = "errors.notBlank")
     private String phoneNumber;
-
+/*
     public OrderPicker toBll(){
         return OrderPicker.builder()
                 .firstname(firstname)
@@ -36,5 +36,5 @@ public class OrderPickerAddForm {
                 .mail(mail)
                 .phoneNumber(phoneNumber)
                 .build();
-    }
+    }*/
 }

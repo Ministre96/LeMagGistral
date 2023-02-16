@@ -24,7 +24,7 @@ public class ClientAddForm {
 
     @NotBlank(message = "errors.notBlank")
     private String mail;
-
+/*
     @NotBlank(message = "errors.notBlank")
     private String phoneNumber;
     public Client toBll(){
@@ -35,5 +35,5 @@ public class ClientAddForm {
                 .mail(mail)
                 .phoneNumber(phoneNumber)
                 .build();
-    }
+    }*/
 }
